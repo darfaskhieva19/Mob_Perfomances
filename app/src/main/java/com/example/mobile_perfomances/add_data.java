@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -82,6 +83,8 @@ public class add_data extends AppCompatActivity {
         String genre = Genre.getText().toString();
         String producer = Producer.getText().toString();
             post(title, genre, producer, encodeImage.Image(bm), view);
+            SystemClock.sleep(1000);
+            onClickBack(view);
         }
 
        /* catch(Exception ex){
