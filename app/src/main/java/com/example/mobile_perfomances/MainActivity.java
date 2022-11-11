@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -25,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     Adapter pAdapter;
     private List<Perfom> listPer = new ArrayList<>();
     Spinner spinner;
-   // String [] filter = {""};
-    String[] i = {"по возрастанию", "по убыванию"};
+    EditText filter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
         pAdapter = new Adapter(MainActivity.this, listPer);
         lst.setAdapter(pAdapter);
 
+        String[] i = {"<по умолчанию>","по наименованию","по жанру"};
+        spinner = findViewById(R.id.sort);
+        filter = findViewById(R.id.filter);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, i);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner=findViewById(R.id.sort);
         spinner.setAdapter(adapter);
 
         new GPerfomances().execute();
@@ -47,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void onAdd(View view) {
         startActivity(new Intent(this, add_data.class));
+    }
+
+    public void onClear(View view) {
+        filter.setText("");
+        spinner.setSelection(0);
+    }
+
+    public void onSearch(View view) {
     }
 
     class GPerfomances extends AsyncTask<Void, Void, String> {

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mobile_Perfomances</string>
+    <string name="search">🔎</string>
+    <string name="clear">⎚</string>
 </resources>
