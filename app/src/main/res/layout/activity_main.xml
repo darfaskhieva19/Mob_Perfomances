@@ -84,15 +84,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sort" />
 
-    <android.widget.Button
-        android:id="@+id/btnClear"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/btn_colors2"
-        android:onClick="onClear"
-        android:text="@string/clear"
-        app:layout_constraintBottom_toBottomOf="@+id/filter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/filter" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
