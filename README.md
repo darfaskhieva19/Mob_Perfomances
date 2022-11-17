@@ -8,7 +8,7 @@
 
 ### Необходимые условия
 
-Для установки мобильного приложения необходима программа Android Studio на вашем компьютере.
+Для открытия проекта необходима программа Android Studio, которую можно скачать с [официального сайта](https://developer.android.com/studio). В загрузках на компьютере необходимо найти загрузочный файл и установить его.
 
 ### Установка
 
@@ -35,6 +35,64 @@
     * Нажмите OK
     * Проект открылся, можете приступать к работе
 
+## Пример работы программы
+![alt text](https://github.com/darfaskhieva19/Mob_Perfomances/blob/master/imagePhone.PNG)
+
+В приложение есть классы для кодирования и декодирования фотографии.
+
+Пример для декодирования фотографии:
+
+```
+public class DecodeImageClass {
+    Context mContext;
+
+    public DecodeImageClass(Context mContext) {
+        this.mContext = mContext;
+    }
+
+    public Bitmap getUserImage(String encodedImg)
+    {
+        if(encodedImg!=null&& !encodedImg.equals("null")) {
+            byte[] bytes = Base64.decode(encodedImg, Base64.DEFAULT);
+            return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        }
+        else
+            return BitmapFactory.decodeResource(DecodeImageClass.this.mContext.getResources(), R.drawable.picture);
+    }
+}
+```
+
+Пример для кодирования фотографии:
+
+```
+public class EncodeImageClass {
+    private String encodeImage(Bitmap bitmap) {
+        int prevW = 150;
+        int prevH = bitmap.getHeight() * prevW / bitmap.getWidth();
+        Bitmap b = Bitmap.createScaledBitmap(bitmap, prevW, prevH, false);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        b.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
+        byte[] bytes = byteArrayOutputStream.toByteArray();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return Base64.getEncoder().encodeToString(bytes);
+        }
+        else{
+            return "";
+        }
+    }
+
+    public String Image(Bitmap bitmap){
+        if(bitmap==null){
+            return null;
+        }
+        else{
+            String img = encodeImage(bitmap);
+            return img;
+        }
+    }
+}
+```
+
 ## Авторы
 
-* **Фасхиева Дарья** - [Ссылка на Github](https://github.com/darfaskhieva19/Mob_Perfomances.git)
+## **Фасхиева Дарья** - [Ссылка на Github](https://github.com/darfaskhieva19/Mob_Perfomances.git)
