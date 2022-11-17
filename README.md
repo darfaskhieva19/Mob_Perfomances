@@ -95,4 +95,4 @@ public class EncodeImageClass {
 
 ## Авторы
 
-## **Фасхиева Дарья** - [Ссылка на Github](https://github.com/darfaskhieva19/Mob_Perfomances.git)
+ **Фасхиева Дарья** - [Ссылка на Github](https://github.com/darfaskhieva19/Mob_Perfomances.git)
